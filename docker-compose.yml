@@ -1,0 +1,19 @@
+# docker-compose で使用するバージョンを定義しています。2023年1月時点では、3.9が最新です。
+version: "3.9"
+# サービス (コンテナ) を定義します。
+services:
+  # postgres をサービスとして定義しました。
+  postgres:
+    # Docker Image は postgres:15.1-alpine を使います。
+    # postgres:15.1-alpine は postgres:15.1 と比較して、イメージサイズが小さくなっています。
+    image: postgres:15.1-alpine
+    # コンテナの名前を指定します。
+    container_name: postgres
+    # 環境変数を設定します。
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydb
+    # ポートの指定（HOST:CONTAINER）
+    ports:
+      - 5432:5432
